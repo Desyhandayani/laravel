@@ -20,7 +20,6 @@ class PostController extends Controller
             $title = ' in ' . $category->name;
         }
 
-        $title = '';
         if(request('author')) {
 
             $author = User::firstWhere('username', request('author'));

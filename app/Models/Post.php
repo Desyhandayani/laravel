@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Post extends Model
 {
-    use HasFactory;
+    use HasFactory, Sluggable;
+
 
     // protected $fillable = ['title' , 'excerpt', 'body'];
 
@@ -23,7 +25,7 @@ class Post extends Model
              });
          });
 
-         $query->when($filters['category'] ?? false,function($query, $category) {
+         $query->when($filters['category'] ?? false, function($query, $category) {
             return $query->whereHas('category', function($query) use ($category) {
                 $query->where('slug', $category);
 
@@ -42,6 +44,7 @@ class Post extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+        // misalkan 1 satu
     }
 
     public function author()
@@ -49,4 +52,23 @@ class Post extends Model
         return $this-> belongsTo(User::class, 'user_id');
     }
 
+    /**
+ * Get the route key for the model.
+ */
+public function getRouteKeyName(): string
+{
+    return 'slug';
 }
+
+public function sluggable(): array
+{
+    return [
+        'slug' => [
+            'source' => 'title'
+        ]
+    ];
+  }
+}
+
+
+ 
