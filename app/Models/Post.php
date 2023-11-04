@@ -44,7 +44,7 @@ class Post extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
-        // misalkan 1 satu
+        // misalkan 1, satu
     }
 
     public function author()

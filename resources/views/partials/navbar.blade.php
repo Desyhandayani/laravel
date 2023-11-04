@@ -8,6 +8,7 @@
         <div class="collapse navbar-collapse " id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
+                    {{-- cek menggunakan operator ternary --}}
                     <a class="nav-link {{ $active === 'home' ? 'active' : '' }}" aria-current="page"
                         href="/home">Home</a>
                 </li>

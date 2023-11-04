@@ -47,3 +47,26 @@
 .navbar .form-control {
   padding: .75rem 1rem;
 }
+
+@media screen and (max-width: 400px) {
+  .navbar .form-control {
+    display: none !important;
+  }
+
+  .nav-link {
+    display: none !important;
+  }
+
+  header {
+    width: auto;
+    display: flex !important;
+    justify-content: space-between !important;
+  }
+
+.navbar-toggler {
+  width: -webkit-fill-available;
+  display: flex !important;
+  justify-content: end !important;
+}  
+
+}
